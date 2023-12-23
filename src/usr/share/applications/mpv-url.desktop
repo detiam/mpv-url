@@ -8,3 +8,4 @@ Type=Application
 MimeType=x-scheme-handler/mpv;
 Icon=link
 Categories=AudioVideo;Audio;Video;Player;TV;
+NoDisplay=true

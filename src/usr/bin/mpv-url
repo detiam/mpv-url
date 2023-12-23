@@ -6,4 +6,13 @@ request=${1:6}
 decoded=$(printf '%b' "${request//%/\\x}")
 
 # launch mpv
-mpv "$decoded"
+if ! mpv_output=$(sh -c "mpv $decoded"); then
+    if which kdialog; then
+        kdialog --error "$mpv_output"
+    elif which zenity; then
+        zenity --error "$mpv_output"
+    elif which xmessage; then
+        xmessage "$mpv_output"
+    fi
+fi
+
